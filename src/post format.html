@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Formats | News 24x7</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .gallery-modal {
+            background: rgba(0,0,0,0.7);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+    <header class="bg-blue-900 text-white p-4 flex justify-between items-center">
+        <div class="text-3xl font-bold">NEWS 24x7</div>
+        <div class="flex space-x-4">
+            <input id="searchInput" type="text" placeholder="What are you looking for?" class="p-2 rounded text-black">
+            <button id="searchBtn" class="bg-blue-700 p-2 rounded hover:bg-blue-400">Search</button>
+        </div>
+    </header>
+    <nav class="bg-gray-800 bg-opacity-30 shadow p-4 flex justify-around fixed bottom-0 w-full z-10">
+        <a href="index.html" class="text-white hover:text-black hover:bg-gray-200 p-2 rounded">LIFE STYLE</a>
+        <a href="#" class="text-white hover:text-black hover:bg-gray-200 p-2 rounded">TRAVEL</a>
+        <a href="#" class="text-white hover:text-black hover:bg-gray-200 p-2 rounded">CODING</a>
+        <a href="#" class="text-white hover:text-black hover:bg-gray-200 p-2 rounded">MUSIC</a>
+        <a href="#" class="text-white hover:text-black hover:bg-gray-200 p-2 rounded">SPORTS</a>
+        <a href="#" class="text-white hover:text-black hover:bg-gray-200 p-2 rounded">DESIGN</a>
+        <a href="#" class="text-white hover:text-black hover:bg-gray-200 p-2 rounded">MOBILE</a>
+        <a href="#" class="text-white hover:text-black hover:bg-gray-200 p-2 rounded">HEALTH</a>
+    </nav>
+    <main class="container mx-auto mt-8 mb-20 flex-1">
+        <section class="bg-white shadow rounded p-8 max-w-3xl mx-auto">
+            <h1 class="text-3xl font-bold mb-6 text-blue-900">Post Formats</h1>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Standard Post -->
+                <div class="bg-gray-50 rounded shadow p-4 hover:shadow-lg transition">
+                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Standard Post" class="w-full h-40 object-cover rounded mb-4">
+                    <h2 class="font-semibold text-lg mb-2">Standard Post</h2>
+                    <p class="text-gray-700 mb-2">
+                        <strong>NASA's Artemis I Mission Launches Successfully</strong><br>
+                        NASA’s Artemis I mission lifted off from Kennedy Space Center, marking a new era in lunar exploration. The uncrewed Orion spacecraft will orbit the Moon before returning to Earth, paving the way for future manned missions.
+                    </p>
+                    <span class="text-gray-500 text-sm">Example: Breaking News, Feature Stories</span>
+                    <button class="mt-4 bg-blue-700 text-white px-4 py-1 rounded hover:bg-blue-500 transition" onclick="alert('Read more coming soon!')">Read More</button>
+                </div>
+                <!-- Gallery Post -->
+                <div class="bg-gray-50 rounded shadow p-4 hover:shadow-lg transition">
+                    <div class="grid grid-cols-3 gap-2 mb-4">
+                        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=200&q=80" alt="Gallery 1" class="h-20 w-full object-cover rounded cursor-pointer gallery-img">
+                        <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=200&q=80" alt="Gallery 2" class="h-20 w-full object-cover rounded cursor-pointer gallery-img">
+                        <img src="https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=200&q=80" alt="Gallery 3" class="h-20 w-full object-cover rounded cursor-pointer gallery-img">
+                    </div>
+                    <h2 class="font-semibold text-lg mb-2">Gallery Post</h2>
+                    <p class="text-gray-700 mb-2">
+                        <strong>Stunning Views from the Swiss Alps</strong><br>
+                        Explore breathtaking landscapes and picturesque villages in this photo essay from the heart of Switzerland.
+                    </p>
+                    <span class="text-gray-500 text-sm">Example: Photo Essays, Event Highlights</span>
+                </div>
+                <!-- Video Post -->
+                <div class="bg-gray-50 rounded shadow p-4 hover:shadow-lg transition">
+                    <div class="mb-4 aspect-w-16 aspect-h-9">
+                        <iframe class="rounded w-full h-40" src="https://www.youtube.com/embed/21X5lGlDOfg" title="NASA Live: Official Stream of NASA TV" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <h2 class="font-semibold text-lg mb-2">Video Post</h2>
+                    <p class="text-gray-700 mb-2">
+                        <strong>NASA Live: Official Stream of NASA TV</strong><br>
+                        Watch live coverage of launches, spacewalks, and more from NASA’s official YouTube channel.
+                    </p>
+                    <span class="text-gray-500 text-sm">Example: Interviews, Live Reports</span>
+                    <button class="mt-4 bg-blue-700 text-white px-4 py-1 rounded hover:bg-blue-500 transition" onclick="window.open('https://www.youtube.com/@NASA', '_blank')">Watch on YouTube</button>
+                </div>
+                <!-- Quote Post -->
+                <div class="bg-gray-50 rounded shadow p-4 hover:shadow-lg transition flex flex-col justify-between">
+                    <img src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?auto=format&fit=crop&w=600&q=80" alt="Quote Post" class="w-full h-40 object-cover rounded mb-4">
+                    <h2 class="font-semibold text-lg mb-2">Quote Post</h2>
+                    <blockquote class="italic text-blue-800 border-l-4 border-blue-400 pl-4 mb-2">
+                        "The only way to do great work is to love what you do."
+                    </blockquote>
+                    <span class="text-gray-700 mb-2">– Steve Jobs</span>
+                    <span class="text-gray-500 text-sm">Example: Editorials, Reviews</span>
+                    <button class="mt-4 bg-blue-700 text-white px-4 py-1 rounded hover:bg-blue-500 transition" onclick="copyQuote()">Copy Quote</button>
+                </div>
+            </div>
+            <!-- Redirect to Home Button -->
+            <div class="flex justify-center mt-10">
+                <a href="index.html" class="inline-block bg-blue-700 text-white px-6 py-2 rounded shadow hover:bg-blue-500 transition font-semibold text-lg">
+                    &larr; Back to Home
+                </a>
+            </div>
+        </section>
+        <!-- Gallery Modal -->
+        <div id="galleryModal" class="fixed inset-0 hidden items-center justify-center z-50 gallery-modal">
+            <div class="bg-white rounded shadow-lg p-4 relative max-w-lg w-full">
+                <button id="closeModal" class="absolute top-2 right-2 text-gray-700 hover:text-red-500 text-2xl">&times;</button>
+                <img id="modalImg" src="" alt="Gallery Large" class="w-full h-96 object-contain rounded">
+            </div>
+        </div>
+    </main>
+    <footer class="bg-blue-900 text-white p-4 mt-4">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2025 News 24x7. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        // Search functionality
+        document.getElementById('searchBtn').addEventListener('click', function() {
+            const query = document.getElementById('searchInput').value.trim();
+            if(query) {
+                alert('You searched for: ' + query);
+            } else {
+                alert('Please enter a search term.');
+            }
+        });
+
+        // Gallery modal functionality
+        const galleryImgs = document.querySelectorAll('.gallery-img');
+        const galleryModal = document.getElementById('galleryModal');
+        const modalImg = document.getElementById('modalImg');
+        const closeModal = document.getElementById('closeModal');
+
+        galleryImgs.forEach(img => {
+            img.addEventListener('click', function() {
+                modalImg.src = this.src;
+                galleryModal.classList.remove('hidden');
+                galleryModal.classList.add('flex');
+            });
+        });
+
+        closeModal.addEventListener('click', function() {
+            galleryModal.classList.add('hidden');
+            galleryModal.classList.remove('flex');
+        });
+
+        // Close modal on outside click
+        galleryModal.addEventListener('click', function(e) {
+            if(e.target === galleryModal) {
+                galleryModal.classList.add('hidden');
+                galleryModal.classList.remove('flex');
+            }
+        });
+
+        // Copy quote functionality
+        function copyQuote() {
+            const quote = `"The only way to do great work is to love what you do." – Steve Jobs`;
+            navigator.clipboard.writeText(quote).then(() => {
+                alert('Quote copied to clipboard!');
+            }, () => {
+                alert('Failed to copy quote.');
+            });
+        }
+    </script>
+</body>
+</html>

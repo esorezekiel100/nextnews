@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News 24x7</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .floating-icons {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transform: translateY(-50%);
+        }
+        .floating-icon {
+            background: #2563eb;
+            color: #fff;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .floating-icon:hover {
+            background: #1e40af;
+        }
+        /* Hamburger styles */
+        #hamburgerBtn {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 60;
+        }
+        #hamburgerBtn span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            margin: 4px 0;
+            background: #fff;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+        /* Mobile nav overlay */
+        #mobileNav {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(30, 58, 138, 0.97);
+            z-index: 50;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            transition: transform 0.3s;
+        }
+        #mobileNav.active {
+            display: flex;
+        }
+        #mobileNav a {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: bold;
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.5rem;
+            transition: background 0.2s, color 0.2s;
+        }
+        #mobileNav a:hover {
+            background: #2563eb;
+            color: #fff;
+        }
+        #closeMobileNav {
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            font-size: 2.5rem;
+            color: #fff;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        /* Responsive overrides */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: row;
+                padding: 1rem 0.5rem;
+            }
+            #hamburgerBtn {
+                display: flex;
+            }
+            nav {
+                display: none !important;
+            }
+            .container.mx-auto.mt-4.flex {
+                flex-direction: column;
+            }
+            aside {
+                width: 100% !important;
+                margin-bottom: 1rem;
+            }
+            main {
+                width: 100% !important;
+            }
+            .floating-icons {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 absolute w-full">
+    <header class="bg-blue-900 text-white p-4 flex justify-between items-center">
+        <div class="text-3xl font-bold">NEWS 24x7</div>
+        <div class="flex space-x-4">
+            <input id="searchInput" type="text" placeholder="What are you looking for?" class="p-2 rounded text-black">
+            <button id="searchBtn" class="bg-blue-700 p-2 rounded hover:bg-blue-400">Search</button>
+        </div>
+    </header>
+    <!-- Hamburger Menu Button -->
+    <button id="hamburgerBtn" aria-label="Open Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobileNav">
+        <button id="closeMobileNav" aria-label="Close Menu">&times;</button>
+        <a href="#">LIFE STYLE</a>
+        <a href="#">TRAVEL</a>
+        <a href="#">CODING</a>
+        <a href="#">MUSIC</a>
+        <a href="#">SPORTS</a>
+        <a href="#">DESIGN</a>
+        <a href="#">MOBILE</a>
+        <a href="#">HEALTH</a>
+    </div>
+    <nav class="bg-gray-800 bg           -opacity-30 shadow p-4 flex justify-around fixed bottom-0 w-full z-10">
+        <a href="#" class="text-white hover:text-black hover:bg-gray-200 p-2 rounded">LIFE STYLE</a>
+        <a href="#" class="text-white hover:text-black hover:bg-gray-200 p-2 rounded">TRAVEL</a>
+        <a href="#" class="text-white hover:text-black hover:bg-gray-200 p-2 rounded">CODING</a>
+        <a href="#" class="text-white hover:text-black hover:bg-gray-200 p-2 rounded">MUSIC</a>
+        <a href="#" class="text-white hover:text-black hover:bg-gray-200 p-2 rounded">SPORTS</a>
+        <a href="#" class="text-white hover:text-black hover:bg-gray-200 p-2 rounded">DESIGN</a>
+        <a href="#" class="text-white hover:text-black hover:bg-gray-200 p-2 rounded">MOBILE</a>
+        <a href="#" class="text-white hover:text-black hover:bg-gray-200 p-2 rounded">HEALTH</a>
+    </nav>
+    <div class="container mx-auto mt-4 flex">
+        <aside class="w-1/4 p-4 bg-white shadow mb-4">
+            <div class="mb-4">
+                <h2 class="font-bold text-lg bg-gray-200 p-2 rounded hover:bg-gray-300">MENU</h2>
+                <ul>
+                    <li><a href="#" class="block py-2 hover:bg-gray-300 rounded">HOME</a></li>
+                    <li><a href="about.html" class="block py-2 hover:bg-gray-300 rounded">ABOUT</a></li>
+                    <li><a href="post format.html" class="block py-2 hover:bg-gray-300 rounded">POST FORMATS</a></li>
+                    <li><a href="#" class="block py-2 hover:bg-gray-300 rounded">PAGES</a></li>
+                    <li><a href="#" class="block py-2 hover:bg-gray-300 rounded">CONTACT</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2 class="font-bold text-lg bg-gray-200 p-2 rounded hover:bg-gray-300">LATEST POST</h2>
+                <div id="latestPosts" class="mt-4">
+                    <!-- Initial post, more will be added by JS -->
+                    <div class="mb-4">
+                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Post Image" class="w-full h-40 object-cover rounded">
+                        <p class="mt-2">LIFE INSURANCE SAVE YOUR LIFE</p>
+                        <span class="text-gray-500 text-sm">MAR 24, 2025</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <main class="w-3/4 p-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="col-span-1 lg:col-span-2">
+                    <img src="./assets/img/cop1.jpeg" alt="Main Image" class="w-full h-65 object-cover shadow-lg hover:opacity-75 transition duration-300 rounded main-img">
+                    <div class="mt-2">
+                        <span class="text-gray-500 text-sm">JAN 20, 2025</span>
+                        <h2 class="font-bold text-xl">COUPLE CYCLE RIDE ON ROAD</h2>
+                    </div>
+                </div>
+                <div>
+                    <img src="./assets/img/beach.jpeg" alt="Post Image" class="w-full h-50 object-cover shadow-lg hover:opacity-75 transition duration-300 rounded post-img">
+                    <div class="mt-2">
+                        <span class="text-gray-500 text-sm">FEB 15, 2025</span>
+                        <h2 class="font-bold text-lg">A BEAUTIFUL SUNSET AT THE BEACH</h2>
+                    </div>
+                </div>
+                <div>
+                    <img src="./assets/img/Mountain Hike.jpeg" alt="Post Image" class="w-full h-32 object-cover shadow-lg hover:opacity-75 transition duration-300 rounded post-img">
+                    <div class="mt-2">
+                        <span class="text-gray-500 text-sm">MAR 10, 2025</span>
+                        <h2 class="font-bold text-lg">HIKING THROUGH THE MOUNTAINS</h2>
+                    </div>
+                </div>
+                <div>
+                    <img src="./assets/img/trail (1).jpeg" alt="Post Image" class="w-full h-32 object-cover shadow-lg hover:opacity-75 transition duration-300 rounded post-img">
+                    <div class="mt-2">
+                        <span class="text-gray-500 text-sm">JAN 20, 2025</span>
+                        <h2 class="font-bold text-lg">WE ENJOY THE TOUR WITH THRILL IN HIMALAYA</h2>
+                    </div>
+                </div>
+                <div>
+                    <img src="./assets/img/swim.jpeg" alt="Post Image" class="w-full h-32 object-cover shadow-lg hover:opacity-75 transition duration-300 rounded post-img">
+                    <div class="mt-2">
+                        <span class="text-gray-500 text-sm">JAN 20, 2025</span>
+                        <h2 class="font-bold text-lg">SWIMMING IS THE BEST EXERCISE FOR WOMEN</h2>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <!-- Floating Social Icons -->
+    <div class="floating-icons" id="floatingIcons">
+        <div class="floating-icon" title="Facebook" onclick="window.open('https://facebook.com', '_blank')">
+            <img src="./assets/img/icon/fb.jpeg" alt="Facebook" class="w-6 h-6 rounded-full">
+        </div>
+        <div class="floating-icon" title="Twitter" onclick="window.open('https://twitter.com', '_blank')">
+            <img src="./assets/img/icon/x.jpeg" alt="Twitter" class="w-6 h-6 rounded-full">
+        </div>
+        <div class="floating-icon" title="Instagram" onclick="window.open('https://instagram.com', '_blank')">
+            <img src="./assets/img/icon/ig (1).jpeg" alt="Instagram" class="w-6 h-6 rounded-full">
+        </div>
+        <div class="floating-icon" title="LinkedIn" onclick="window.open('https://linkedin.com', '_blank')">
+            <img src="./assets/img/icon/link.jpeg" alt="LinkedIn" class="w-6 h-6 rounded-full">
+        </div>
+        <div class="floating-icon" title="Scroll to Top" id="scrollTopBtn">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="white"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/></svg>
+        </div>
+    </div>
+    <!-- Image Modal -->
+    <div id="imgModal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded shadow-lg p-4 relative max-w-lg w-full">
+            <button id="closeImgModal" class="absolute top-2 right-2 text-gray-700 hover:text-red-500 text-2xl">&times;</button>
+            <img id="modalImg" src="" alt="Large View" class="w-full h-96 object-contain rounded">
+        </div>
+    </div>
+    <footer class="bg-blue-900 text-white p-4 mt-4">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2025 News 24x7. All rights reserved.</p>
+            <div class="flex justify-center space-x-4 mt-2">
+                <a href="#" class="hover:text-gray-400">Privacy Policy</a>
+                <a href="#" class="hover:text-gray-400">Terms of Service</a>
+                <a href="#" class="hover:text-gray-400">Contact Us</a>
+            </div>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a href="#" class="hover:text-gray-400">
+                    <img src="./assets/img/icon/fb.jpeg" alt="Facebook" class="w-6 h-6 rounded-full">
+                </a>
+                <a href="#" class="hover:text-gray-400">
+                    <img src="./assets/img/icon/x.jpeg" alt="Twitter" class="w-6 h-6 rounded-full">
+                </a>
+                <a href="#" class="hover:text-gray-400">
+                    <img src="./assets/img/icon/ig (1).jpeg" alt="Instagram" class="w-6 h-6 rounded-full">
+                </a>
+                <a href="#" class="hover:text-gray-400">
+                    <img src="./assets/img/icon/link.jpeg" alt="LinkedIn" class="w-6 h-6 rounded-full">
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Search functionality
+        document.getElementById('searchBtn').addEventListener('click', function() {
+            const query = document.getElementById('searchInput').value.trim();
+            if(query) {
+                alert('You searched for: ' + query);
+            } else {
+                alert('Please enter a search term.');
+            }
+        });
+
+        // Floating scroll to top button
+        document.getElementById('scrollTopBtn').addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Image modal functionality for all post images
+        const postImgs = document.querySelectorAll('.post-img, .main-img');
+        const imgModal = document.getElementById('imgModal');
+        const modalImg = document.getElementById('modalImg');
+        const closeImgModal = document.getElementById('closeImgModal');
+
+        postImgs.forEach(img => {
+            img.addEventListener('click', function() {
+                modalImg.src = this.src;
+                imgModal.classList.remove('hidden');
+            });
+        });
+
+        closeImgModal.addEventListener('click', function() {
+            imgModal.classList.add('hidden');
+            modalImg.src = '';
+        });
+
+        imgModal.addEventListener('click', function(e) {
+            if(e.target === imgModal) {
+                imgModal.classList.add('hidden');
+                modalImg.src = '';
+            }
+        });
+
+        // Hide floating icons on small screens
+        function updateFloatingIconsVisibility() {
+            const floatingIcons = document.getElementById('floatingIcons');
+            if(window.innerWidth < 768) {
+                floatingIcons.classList.add('hidden');
+            } else {
+                floatingIcons.classList.remove('hidden');
+            }
+        }
+
+        window.addEventListener('resize', updateFloatingIconsVisibility);
+        document.addEventListener('DOMContentLoaded', updateFloatingIconsVisibility);
+
+        // Add more articles to Latest Post dynamically (with web images and videos)
+        document.addEventListener('DOMContentLoaded', function() {
+            const latestPosts = [
+                {
+                    type: 'image',
+                    img: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80',
+                    title: 'THE FUTURE OF AI IN NEWS REPORTING',
+                    date: 'APR 2, 2025'
+                },
+                {
+                    type: 'video',
+                    video: 'https://www.youtube.com/embed/21X5lGlDOfg',
+                    title: 'NASA Live: Official Stream of NASA TV',
+                    date: 'APR 5, 2025'
+                },
+                {
+                    type: 'image',
+                    img: './assets/img/health.jpg;',
+                    title: 'HEALTH TRENDS TO WATCH THIS YEAR',
+                    date: 'APR 10, 2025'
+                },
+                {
+                    type: 'video',
+                    video: 'https://www.youtube.com/embed/ScMzIvxBSi4',
+                    title: 'Top 5 Travel Destinations for 2025',
+                    date: 'APR 15, 2025'
+                }
+            ];
+            const latestPostsDiv = document.getElementById('latestPosts');
+            latestPosts.forEach(post => {
+                const postDiv = document.createElement('div');
+                postDiv.className = 'mb-4';
+                if (post.type === 'image') {
+                    postDiv.innerHTML = `
+                        <img src="${post.img}" alt="Post Image" class="w-full h-40 object-cover rounded">
+                        <p class="mt-2">${post.title}</p>
+                        <span class="text-gray-500 text-sm">${post.date}</span>
+                    `;
+                } else if (post.type === 'video') {
+                    postDiv.innerHTML = `
+                        <div class="w-full h-40 mb-2">
+                            <iframe class="w-full h-40 rounded" src="${post.video}" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <p class="mt-2">${post.title}</p>
+                        <span class="text-gray-500 text-sm">${post.date}</span>
+                    `;
+                }
+                latestPostsDiv.appendChild(postDiv);
+            });
+        });
+
+        // Hamburger menu functionality
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        const closeMobileNav = document.getElementById('closeMobileNav');
+        hamburgerBtn.addEventListener('click', () => {
+            mobileNav.classList.add('active');
+        });
+        closeMobileNav.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+        });
+        // Close mobile nav on link click
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+            });
+        });
+    </script>
+    <!-- Add this before the closing </body> tag in all your HTML files -->
+    <script src="news.js"></script>
+    <script src="contact.js"></script>
+</body>
+</html>
